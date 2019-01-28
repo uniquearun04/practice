@@ -18,20 +18,20 @@ public class StackOverflow {
         return teamStandings;
     }
 
-    public List<TeamStanding> mergeTeamStandingList(List<TeamStanding> teamStandingList) {
-        final Map<Integer, TeamStanding> idTeamVsTeamStandingMap = new HashMap<Integer, TeamStanding>();
-        teamStandingList.forEach(teamStanding -> {
-            if(idTeamVsTeamStandingMap.containsKey(teamStanding.getIdTeam())) {
-                TeamStanding teamStanding1 = idTeamVsTeamStandingMap.get(teamStanding.getIdTeam());
-                teamStanding1.setTeamDraws(teamStanding1.getTeamDraws() + teamStanding.getTeamDraws());
-                //so on
-            } else {
-                idTeamVsTeamStandingMap.put(teamStanding.getIdTeam(), teamStanding);
-            }
-        });
-
-        return new ArrayList<>(idTeamVsTeamStandingMap.values());
-    }
+//    public List<TeamStanding> mergeTeamStandingList(List<TeamStanding> teamStandingList) {
+//        final Map<Integer, TeamStanding> idTeamVsTeamStandingMap = new HashMap<Integer, TeamStanding>();
+//        teamStandingList.forEach(teamStanding -> {
+//            if(idTeamVsTeamStandingMap.containsKey(teamStanding.getIdTeam())) {
+//                TeamStanding teamStanding1 = idTeamVsTeamStandingMap.get(teamStanding.getIdTeam());
+//                teamStanding1.setTeamDraws(teamStanding1.getTeamDraws() + teamStanding.getTeamDraws());
+//                //so on
+//            } else {
+//                idTeamVsTeamStandingMap.put(teamStanding.getIdTeam(), teamStanding);
+//            }
+//        });
+//
+//        return new ArrayList<>(idTeamVsTeamStandingMap.values());
+//    }
 
 
 
