@@ -29,7 +29,7 @@ public class AddOneToNumberList {
         ArrayList<Integer> arrayList = new ArrayList<>();
         AddOneToNumberList addOneToNumberList = new AddOneToNumberList();
         addOneToNumberList.plusOne(arrayList);
-        arrayList.
+//        arrayList.
 
     }
 

@@ -27,18 +27,31 @@ public class SortByColors {
 
         SortByColors sortByColors = new SortByColors();
         sortByColors.sortColors(list);
+        System.out.println(list);
     }
     public void sortColors(ArrayList<Integer> a) {
 
         int red = 0;
-        int white = 1;
-        int blue = 2;
+        int white = 0;
+        int blue = 0;
 
-        if(a.contains(red) && a.contains(white) && a.contains(blue)) {
-            int i = 0;
-            int j = 1;
-            int k = 2;
-
+        for (int i = 0; i < a.size(); i++) {
+            if(a.get(i) == 0) {
+                red++;
+            } else if(a.get(i) == 1) {
+                white++;
+            } else {
+                blue++;
+            }
+        }
+        for (int i = 0; i < red; i++) {
+            a.set(i,0);
+        }
+        for (int i = red; i < red+white; i++) {
+            a.set(i,1);
+        }
+        for (int i = red+white; i < red+white+blue; i++) {
+            a.set(i,2);
         }
     }
 }
