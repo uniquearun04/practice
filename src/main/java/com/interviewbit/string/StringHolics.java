@@ -1,6 +1,8 @@
 package com.interviewbit.string;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by achaudhary on 2/13/19.
@@ -23,7 +25,9 @@ Eg: String is abaa
 <li>At time 5, string is aaba, as 1 letters of the string aaab is circularly rotated to the back</li>
 </ul>
 After some units of time, a string becomes equal to it’s original self.
-Once a string becomes equal to itself, it’s letters start to rotate from the first letter again (process resets). So, if a string takes t time to get back to the original, at time t+1 one letter will be rotated and the string will be it’s original self at 2t time.
+Once a string becomes equal to itself, it’s letters start to rotate from the first letter again (process resets).
+So, if a string takes t time to get back to the original, at time t+1 one letter will be rotated and the string will
+be it’s original self at 2t time.
 You have to find the minimum time, where maximum number of strings are equal to their original self.
 As this time can be very large, give the answer modulo 109+7.
 
@@ -60,7 +64,39 @@ Hence, 3 strings are their original self at time 4.
  */
 public class StringHolics {
 
+    public static void main(String ...args) {
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("a","ababa","aba"));
+        StringHolics stringHolics = new StringHolics();
+        int solve = stringHolics.solve(list);
+        System.out.println(solve);
+    }
+
     public int solve(ArrayList<String> A) {
-        return 0;
+        int lcm = lcm(A.get(0).length(), A.get(1).length());
+        for(int i = 2; i < A.size(); i++) {
+            lcm = lcm(lcm, A.get(i).length());
+        }
+        int t = findTime(lcm);
+
+        return t;
+    }
+
+    int findTime(int lcm) {
+        double t1 = (-1 + Math.sqrt(1.0 + 4 * 2 * lcm)) /2;
+        return (int)t1;
+    }
+
+    int lcm(int a, int b) {
+        return (int)((a * 1L * b) / gcd(a,b));
+    }
+
+    int gcd(int a, int b) {
+        if(a == 0 || b == 0) {
+            return 0;
+        }
+        if(a == b) return a;
+
+        if(a > b) return gcd(a-b, b);
+        return gcd(a, b-a);
     }
 }
