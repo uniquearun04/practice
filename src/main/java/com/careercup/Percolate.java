@@ -78,9 +78,13 @@ public class Percolate {
 
 }
 
-@AllArgsConstructor
 class Brick {
     int row;
     int column;
     boolean porus;
+    public Brick(int row, int column, boolean porus) {
+        this.row = row;
+        this.column = column;
+        this.porus = porus;
+    }
 }
