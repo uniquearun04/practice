@@ -72,13 +72,41 @@ public class StringHolics {
     }
 
     public int solve(ArrayList<String> A) {
-        int lcm = lcm(A.get(0).length(), A.get(1).length());
+        int lcm = lcm(findMaxLenSubString(A.get(0)), findMaxLenSubString(A.get(1)));
         for(int i = 2; i < A.size(); i++) {
-            lcm = lcm(lcm, A.get(i).length());
+            lcm = lcm(lcm, findMaxLenSubString(A.get(i)));
         }
         int t = findTime(lcm);
 
         return t;
+    }
+
+    int findMaxLenSubString(String string) {
+        int n = string.length();
+        int [] lps = new int [n];
+        int i = 1;
+        int len = 0;
+
+        lps[0] = 0;
+        int max = 0;
+
+        while(i < n) {
+            if(string.charAt(i) == string.charAt(len)) {
+                len++;
+                lps[i] = len;
+                i++;
+                max = Math.max(len, max);
+            } else {
+                if(len == 0) {
+                    lps[i] = 0;
+                    i++;
+                } else {
+                    len = lps[len -1];
+                }
+            }
+        }
+
+        return max >= 2 ? max : string.length();
     }
 
     int findTime(int lcm) {
@@ -91,8 +119,11 @@ public class StringHolics {
     }
 
     int gcd(int a, int b) {
-        if(a == 0 || b == 0) {
-            return 0;
+        if(a == 0 ) {
+            return b;
+        }
+        if(b == 0) {
+            return a;
         }
         if(a == b) return a;
 
