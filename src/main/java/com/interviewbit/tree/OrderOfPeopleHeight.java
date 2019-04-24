@@ -31,5 +31,6 @@ You can do similar inference for other people in the list.
 public class OrderOfPeopleHeight {
 
     public ArrayList<Integer> order(ArrayList<Integer> A, ArrayList<Integer> B) {
+        return null;
     }
 }
